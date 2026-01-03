@@ -1,0 +1,198 @@
+.contacts-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.contacts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.contacts-header h2 {
+  color: #333;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.sort-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sort-controls label {
+  font-weight: 600;
+  color: #333;
+}
+
+.sort-controls select {
+  padding: 0.5rem 0.75rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  background-color: white;
+  transition: border-color 0.3s ease;
+}
+
+.sort-controls select:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+.no-contacts {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+}
+
+.no-contacts p {
+  font-size: 1.1rem;
+}
+
+.error-message {
+  background-color: #fadbd8;
+  color: #c0392b;
+  padding: 0.75rem 1rem;
+  border-radius: 4px;
+  border-left: 4px solid #e74c3c;
+  margin-bottom: 1rem;
+}
+
+.contacts-table-wrapper {
+  overflow-x: auto;
+}
+
+.contacts-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.contacts-table thead {
+  background-color: #f8f9fa;
+}
+
+.contacts-table th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+  border-bottom: 2px solid #e0e0e0;
+  white-space: nowrap;
+}
+
+.contacts-table tbody tr {
+  border-bottom: 1px solid #e0e0e0;
+  transition: background-color 0.2s ease;
+}
+
+.contacts-table tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+.contacts-table td {
+  padding: 1rem;
+  color: #555;
+}
+
+.contact-row:last-child td {
+  border-bottom: none;
+}
+
+.delete-btn {
+  padding: 0.5rem 1rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+  background-color: #c0392b;
+  transform: scale(1.05);
+}
+
+.delete-btn:active {
+  transform: scale(0.95);
+}
+
+.contacts-count {
+  text-align: right;
+  color: #999;
+  font-size: 0.9rem;
+  margin-top: 1rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .contacts-container {
+    padding: 1.5rem;
+  }
+
+  .contacts-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contacts-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .sort-controls {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .contacts-table {
+    font-size: 0.9rem;
+  }
+
+  .contacts-table th,
+  .contacts-table td {
+    padding: 0.75rem 0.5rem;
+  }
+
+  .delete-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contacts-table-wrapper {
+    overflow-x: auto;
+  }
+
+  .contacts-table {
+    min-width: 600px;
+  }
+
+  .contacts-table th,
+  .contacts-table td {
+    padding: 0.5rem;
+    font-size: 0.85rem;
+  }
+
+  .contacts-table th {
+    position: sticky;
+    top: 0;
+    background-color: #f8f9fa;
+  }
+
+  /* Hide certain columns on very small screens */
+  .contacts-table th:nth-child(4),
+  .contacts-table td:nth-child(4) {
+    display: none;
+  }
+}
