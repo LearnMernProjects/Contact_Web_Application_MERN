@@ -204,11 +204,53 @@ npm run build
 
 ## Deployment Options
 
-### Frontend
-- Vercel (Recommended for React apps)
-- Netlify
-- GitHub Pages
-- AWS S3 + CloudFront
+### Frontend - Vercel
+1. Push code to GitHub
+2. Go to https://vercel.com
+3. Click "Import Project" and select the GitHub repository
+4. Set **Root Directory** to `frontend`
+5. Add Environment Variable:
+   - Name: `REACT_APP_API_URL`
+   - Value: `https://your-render-backend.onrender.com`
+6. Click "Deploy"
+7. Frontend URL will be provided (e.g., `contact-management.vercel.app`)
+
+### Backend - Render
+1. Push code to GitHub
+2. Go to https://render.com
+3. Click "New Web Service" and connect GitHub repository
+4. Configure:
+   - **Name**: contact-management-api
+   - **Runtime**: Node
+   - **Branch**: main
+   - **Build Command**: `cd backend && npm install`
+   - **Start Command**: `cd backend && npm start`
+   - **Region**: Choose closest region
+5. Add Environment Variables:
+   - `MONGO_URI`: Your MongoDB Atlas connection string
+   - `PORT`: 5000
+   - `NODE_ENV`: production
+6. Click "Deploy Web Service"
+7. Wait 2-3 minutes for deployment
+8. Copy your Render URL (e.g., `https://contact-management-api-xxxxx.onrender.com`)
+
+### Database - MongoDB Atlas
+1. Go to https://www.mongodb.com/cloud/atlas
+2. Create a free cluster
+3. Add IP Address: Go to Network Access > Add IP Address > Allow from Anywhere (0.0.0.0/0)
+4. Create Database User and copy connection string
+5. Use connection string as `MONGO_URI` in Render environment variables
+
+### Live Demo
+- **Frontend**: https://contact-management-frontend.vercel.app
+- **Backend API**: https://contact-management-api-hj8f.onrender.com/api/contacts
+- **GitHub**: https://github.com/LearnMernProjects/Contact_Web_Application_MERN
+
+### Deployment Troubleshooting
+- **Backend 500 error**: Check MongoDB IP whitelist on Atlas (allow 0.0.0.0/0)
+- **Frontend 404**: Verify Root Directory is set to `frontend` in Vercel
+- **API not connecting**: Ensure `REACT_APP_API_URL` is set correctly in Vercel
+- **MongoDB connection error**: Verify `MONGO_URI` environment variable in Render
 
 ### Backend
 - Heroku
@@ -216,11 +258,6 @@ npm run build
 - Railway
 - AWS EC2
 - DigitalOcean
-
-### Database
-- MongoDB Atlas (free tier available)
-- Self-hosted MongoDB
-- AWS DocumentDB
 
 ## Testing the Application
 
