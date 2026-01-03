@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../styles/ContactList.css';
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+
 const ContactList = ({ refreshTrigger }) => {
   const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -16,7 +18,7 @@ const ContactList = ({ refreshTrigger }) => {
     setLoading(true);
     setError('');
     try {
-      const response = await axios.get('/api/contacts');
+      const response = await axios.get(`${API_URL}/api/contacts`);
       setContacts(response.data.data || []);
     } catch (err) {
       setError('Failed to fetch contacts');
@@ -29,7 +31,7 @@ const ContactList = ({ refreshTrigger }) => {
   const handleDelete = async (id) => {
     if (window.confirm('Are you sure you want to delete this contact?')) {
       try {
-        await axios.delete(`/api/contacts/${id}`);
+        await axios.delete(`${API_URL}/api/contacts/${id}`);
         setContacts((prev) => prev.filter((contact) => contact._id !== id));
       } catch (err) {
         setError('Failed to delete contact');
