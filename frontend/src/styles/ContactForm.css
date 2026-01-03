@@ -58,6 +58,16 @@
   font-weight: 500;
 }
 
+.hint-text {
+  color: #f39c12;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
 .error-message {
   background-color: #fadbd8;
   color: #c0392b;

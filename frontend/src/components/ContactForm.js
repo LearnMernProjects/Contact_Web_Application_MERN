@@ -148,6 +148,12 @@ const ContactForm = ({ onContactAdded }) => {
             className={errors.email ? 'input-error' : ''}
           />
           {errors.email && <span className="error-text">{errors.email}</span>}
+          {formData.email && !formData.email.includes('@') && (
+            <span className="hint-text">💡 Add @ in email</span>
+          )}
+          {formData.email && formData.email.includes('@') && !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(formData.email) && (
+            <span className="hint-text">💡 Complete email format (example@domain.com)</span>
+          )}
         </div>
 
         <div className="form-group">
@@ -162,6 +168,12 @@ const ContactForm = ({ onContactAdded }) => {
             className={errors.phone ? 'input-error' : ''}
           />
           {errors.phone && <span className="error-text">{errors.phone}</span>}
+          {formData.phone && formData.phone.replace(/[\s\-]/g, '').length < 10 && (
+            <span className="hint-text">💡 Add {10 - formData.phone.replace(/[\s\-]/g, '').length} more digit{10 - formData.phone.replace(/[\s\-]/g, '').length !== 1 ? 's' : ''}</span>
+          )}
+          {formData.phone && formData.phone.replace(/[\s\-]/g, '').length === 10 && !/^\d{10}$|^\+\d{1,3}\d{9,14}$/.test(formData.phone.replace(/[\s\-]/g, '')) && (
+            <span className="hint-text">💡 Valid 10-digit phone required</span>
+          )}
         </div>
 
         <div className="form-group">
